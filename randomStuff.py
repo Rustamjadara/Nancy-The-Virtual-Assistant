@@ -9,11 +9,19 @@ def coin():
     return "It's "+output[randint(0,1)]
 
 #check Net connection
-import socket
-
 def connectionStatus():
+    import socket
     ipaddress = socket.gethostbyname(socket.gethostname())
     if ipaddress == "127.0.0.1":
         return False
     else:
         return True
+
+#Brightness Control
+from subprocess import getoutput,call
+def changeBrightness(n):
+    try:
+        call(["./brightness", str(n / 100)])
+    except:
+        from notify import notify
+        notify(message="Failed to change brightness")
