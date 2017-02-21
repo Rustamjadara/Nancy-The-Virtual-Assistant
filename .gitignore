@@ -7,3 +7,5 @@
 .idea/modules.xml
 .idea/workspace.xml
 microphone_log.txt
+.vscode/
+__pycache__/

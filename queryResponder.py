@@ -62,12 +62,19 @@ def search(Input):
         return
 
     #Command to change brightness
-    from randomStuff import changeBrightness
     if match(r"^set brightness to.*",Input):
+        from randomStuff import changeBrightness
         Input=Input.replace("set brightness to ","")
-        print(Input)
         changeBrightness(float(Input))
         return
+
+    #Command to change volume level
+    if match(r"^set volume to.*",Input):
+        from randomStuff import changeVolume
+        Input=Input.replace("set volume to ","")
+        changeVolume(int(Input))
+        return
+
 
     #Command to open Applications
     if match(r"^execute.*$",Input):

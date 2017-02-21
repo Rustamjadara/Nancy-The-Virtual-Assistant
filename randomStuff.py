@@ -17,11 +17,17 @@ def connectionStatus():
     else:
         return True
 
+
+from notify import notify
 #Brightness Control
-from subprocess import getoutput,call
 def changeBrightness(n):
+    from subprocess import call
     try:
         call(["./brightness", str(n / 100)])
     except:
-        from notify import notify
         notify(message="Failed to change brightness")
+
+#Volume Control
+def changeVolume(n):
+    from subprocess import getoutput
+    getoutput("osascript -e 'set Volume "+str(n)+"'")
