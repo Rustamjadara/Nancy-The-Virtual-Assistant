@@ -25,9 +25,13 @@ def changeBrightness(n):
     try:
         call(["./brightness", str(n / 100)])
     except:
-        notify(message="Failed to change brightness")
+        notify(message="Failed to change brightness, the value should be b/w 1-100 only")
 
 #Volume Control
 def changeVolume(n):
     from subprocess import getoutput
-    getoutput("osascript -e 'set Volume "+str(n)+"'")
+    try:
+        getoutput("osascript -e 'set Volume "+str(n)+"'")
+    except:
+        notify(message="Failed to change volume level, the value must be b/w 1-10")
+
